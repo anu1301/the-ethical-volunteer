@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+import uuid
+
+DURATION = ((7, "7 Days"), (14, "14 Days"), (21, "21 Days"))
+STATUS = ((0, 'Booking Made'), (1, 'Booking Confirmed'))
+PRODUCTLIST = ()
 
 
 class Category(models.Model):
@@ -33,4 +38,19 @@ class Product(models.Model):
         index_together = (('id', 'slug'),)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
+
+
+class Booking(models.Model):
+    booking_id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="booking")
+    product_choice = models.CharField(max_length=20, choices=PRODUCTLIST)
+    booking_date = models.DateField(auto_now=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    duration = models.CharField(max_length=10, choices=DURATION, default='7')
+    status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-booking_date']
