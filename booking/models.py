@@ -46,7 +46,8 @@ class Booking(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="booking")
-    product_choice = models.CharField(max_length=20, choices=PRODUCTLIST)
+    product_choice = models.ForeignKey(
+        Product, on_delete=models.CASCADE, max_length=100, related_name='product_list')
     booking_date = models.DateField(auto_now=False)
     created_on = models.DateTimeField(auto_now_add=True)
     duration = models.CharField(max_length=10, choices=DURATION, default='7')

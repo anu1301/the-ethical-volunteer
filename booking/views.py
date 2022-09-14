@@ -9,7 +9,10 @@ class HomePage(View):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html', {'home_active': 'user-redirect'})
+        return render(
+            request,
+            'index.html',
+            {'home_active': 'user-redirect'})
 
 
 class HolidayView(View):
@@ -17,5 +20,7 @@ class HolidayView(View):
     paginate_by = 6
 
     def get(self, request, *args, **kwargs):
-        return render(request, "holiday.html", {"holiday_active": "custom-red",})
-
+        return render(
+            request,
+            "holiday.html", 
+            {"holiday_active": "user-redirect"})
