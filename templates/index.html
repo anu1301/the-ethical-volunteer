@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="row">
+                <img class="w-100 mx-auto" id="hero"
+                    src="https://res.cloudinary.com/anu1301/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1663428678/the%20ethical%20volunteer/bridge_traveller_b1u212.jpg"
+                    alt="hero_image">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <a class="nav-link text-white btn btn-danger mx-auto mt-5 d-block fit-width"
+                    href="{% url 'holidays' %}">
+                    View Holidays
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="w-75 mx-auto mt-2 text-center">
+                    <h3>
+                        Images and Text
+                    </h3>
+
+                    <br>
+
+                    <p>
+                        Text
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
